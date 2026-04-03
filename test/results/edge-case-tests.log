@@ -1,0 +1,62 @@
+=== Edge Case Tests Started at Fri Apr  3 03:43:19 PM UTC 2026 ===
+[2026-04-03T15:43:19Z] [INFO] Backing up original memory directory...
+[0;34m[TEST][0m Empty Directory Handling
+[2026-04-03T15:43:19Z] [INFO] Testing: Empty Memory Directory Handling
+[2026-04-03T15:43:22Z] [INFO] Memory system handled empty directory gracefully
+[0;32m[PASS][0m Empty Directory Handling
+[0;34m[TEST][0m Empty Memory Scan
+[2026-04-03T15:43:22Z] [INFO] Testing: Empty Memory Scan
+[2026-04-03T15:43:25Z] [INFO] Empty memory search handled correctly
+[0;32m[PASS][0m Empty Memory Scan
+[0;34m[TEST][0m Corrupted YAML - Missing Closing
+[2026-04-03T15:43:25Z] [INFO] Testing: Corrupted YAML - Missing Closing Delimiter
+[2026-04-03T15:43:28Z] [WARN] Index failed with corrupted YAML (exit code: 1)
+[0;31m[FAIL][0m Corrupted YAML - Missing Closing
+[0;34m[TEST][0m Corrupted YAML - Invalid Syntax
+[2026-04-03T15:43:28Z] [INFO] Testing: Corrupted YAML - Invalid Syntax
+[2026-04-03T15:43:31Z] [INFO] Index handled invalid YAML syntax without crashing
+[0;32m[PASS][0m Corrupted YAML - Invalid Syntax
+[0;34m[TEST][0m Corrupted YAML - Binary Content
+[2026-04-03T15:43:31Z] [INFO] Testing: Corrupted YAML - Binary Content in Frontmatter
+[2026-04-03T15:43:34Z] [INFO] Index handled binary content without crashing
+[0;32m[PASS][0m Corrupted YAML - Binary Content
+[0;34m[TEST][0m Concurrent Writes - Same File
+[2026-04-03T15:43:34Z] [INFO] Testing: Concurrent Writes - Same File
+[2026-04-03T15:43:34Z] [INFO] Concurrent writes completed. Line count: 51 (expected ~51)
+[0;32m[PASS][0m Concurrent Writes - Same File
+[0;34m[TEST][0m Concurrent Index Operations
+[2026-04-03T15:43:34Z] [INFO] Testing: Concurrent Index Operations
+[2026-04-03T15:43:38Z] [INFO] Index operation 1 completed successfully
+[2026-04-03T15:43:38Z] [INFO] Index operation 2 completed successfully
+[2026-04-03T15:43:38Z] [INFO] Index operation 3 completed successfully
+[0;32m[PASS][0m Concurrent Index Operations
+[0;34m[TEST][0m Disk Space Simulation
+[2026-04-03T15:43:38Z] [INFO] Testing: Disk Space Exhaustion Simulation
+[2026-04-03T15:43:38Z] [INFO] Creating test file of 10240KB...
+[2026-04-03T15:43:38Z] [INFO] Large file created, testing write operations...
+[2026-04-03T15:43:38Z] [INFO] Write succeeded (space still available)
+[0;32m[PASS][0m Disk Space Simulation
+[0;34m[TEST][0m Large Memory File
+[2026-04-03T15:43:38Z] [INFO] Testing: Large Memory File Handling
+[2026-04-03T15:43:38Z] [INFO] Created file of 166998 bytes
+[2026-04-03T15:43:43Z] [INFO] Large file indexed successfully
+[0;32m[PASS][0m Large Memory File
+[0;34m[TEST][0m Read-Only Directory
+[2026-04-03T15:43:43Z] [INFO] Testing: Read-Only Memory Directory
+[2026-04-03T15:43:43Z] [INFO] Correctly detected read-only condition
+[0;32m[PASS][0m Read-Only Directory
+[0;34m[TEST][0m Read-Only File
+[2026-04-03T15:43:43Z] [INFO] Testing: Read-Only Memory File
+[2026-04-03T15:43:43Z] [INFO] Correctly detected read-only file
+[0;32m[PASS][0m Read-Only File
+[0;34m[TEST][0m Script Permission Handling
+[2026-04-03T15:43:43Z] [INFO] Testing: Script Permission Handling
+[2026-04-03T15:43:49Z] [INFO] Script ran successfully via bash
+[0;32m[PASS][0m Script Permission Handling
+[0;34m[TEST][0m File Ownership Simulation
+[2026-04-03T15:43:49Z] [INFO] Testing: File Ownership Simulation
+[2026-04-03T15:43:49Z] [INFO] Correctly detected permission denied
+[0;32m[PASS][0m File Ownership Simulation
+[2026-04-03T15:43:49Z] [INFO] Restoring original memory directory...
+[2026-04-03T15:43:49Z] [INFO] Cleaning up test artifacts...
+[2026-04-03T15:43:49Z] [INFO] Report generated: /home/cina/.openclaw/workspace/test/results/edge-case-report.md

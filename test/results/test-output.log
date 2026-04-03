@@ -1,0 +1,163 @@
+[0;34m========================================[0m
+[0;34mOpenClaw Memory System Edge Case Tests[0m
+[0;34m========================================[0m
+
+[2026-04-03T15:43:19Z] [INFO] Backing up original memory directory...
+
+[1;33mRunning Test Suite 1: Empty Memory Directory[0m
+[0;34m[TEST][0m Empty Directory Handling
+[2026-04-03T15:43:19Z] [INFO] Testing: Empty Memory Directory Handling
+[2026-04-03T15:43:22Z] [INFO] Memory system handled empty directory gracefully
+[0;32m[PASS][0m Empty Directory Handling
+[0;34m[TEST][0m Empty Memory Scan
+[2026-04-03T15:43:22Z] [INFO] Testing: Empty Memory Scan
+[2026-04-03T15:43:25Z] [INFO] Empty memory search handled correctly
+[0;32m[PASS][0m Empty Memory Scan
+
+[1;33mRunning Test Suite 2: Corrupted YAML Frontmatter[0m
+[0;34m[TEST][0m Corrupted YAML - Missing Closing
+[2026-04-03T15:43:25Z] [INFO] Testing: Corrupted YAML - Missing Closing Delimiter
+Config warnings:\n- plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot (stale config entry ignored; remove it from plugins config)
+│
+◇  Config warnings ────────────────────────────────────────────────────╮
+│                                                                      │
+│  - plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot  │
+│    (stale config entry ignored; remove it from plugins config)       │
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────╯
+Memory index failed (main): ENOENT: no such file or directory, open '/home/cina/.openclaw/workspace/memory/stability-test-293.md'
+[2026-04-03T15:43:28Z] [WARN] Index failed with corrupted YAML (exit code: 1)
+[0;31m[FAIL][0m Corrupted YAML - Missing Closing
+[0;34m[TEST][0m Corrupted YAML - Invalid Syntax
+[2026-04-03T15:43:28Z] [INFO] Testing: Corrupted YAML - Invalid Syntax
+Config warnings:\n- plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot (stale config entry ignored; remove it from plugins config)
+│
+◇  Config warnings ────────────────────────────────────────────────────╮
+│                                                                      │
+│  - plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot  │
+│    (stale config entry ignored; remove it from plugins config)       │
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────╯
+Memory index updated (main).
+[2026-04-03T15:43:31Z] [INFO] Index handled invalid YAML syntax without crashing
+[0;32m[PASS][0m Corrupted YAML - Invalid Syntax
+[0;34m[TEST][0m Corrupted YAML - Binary Content
+[2026-04-03T15:43:31Z] [INFO] Testing: Corrupted YAML - Binary Content in Frontmatter
+Config warnings:\n- plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot (stale config entry ignored; remove it from plugins config)
+│
+◇  Config warnings ────────────────────────────────────────────────────╮
+│                                                                      │
+│  - plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot  │
+│    (stale config entry ignored; remove it from plugins config)       │
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────╯
+Memory index updated (main).
+[2026-04-03T15:43:34Z] [INFO] Index handled binary content without crashing
+[0;32m[PASS][0m Corrupted YAML - Binary Content
+
+[1;33mRunning Test Suite 3: Concurrent Write Conflicts[0m
+[0;34m[TEST][0m Concurrent Writes - Same File
+[2026-04-03T15:43:34Z] [INFO] Testing: Concurrent Writes - Same File
+[2026-04-03T15:43:34Z] [INFO] Concurrent writes completed. Line count: 51 (expected ~51)
+[0;32m[PASS][0m Concurrent Writes - Same File
+[0;34m[TEST][0m Concurrent Index Operations
+[2026-04-03T15:43:34Z] [INFO] Testing: Concurrent Index Operations
+[2026-04-03T15:43:38Z] [INFO] Index operation 1 completed successfully
+[2026-04-03T15:43:38Z] [INFO] Index operation 2 completed successfully
+[2026-04-03T15:43:38Z] [INFO] Index operation 3 completed successfully
+[0;32m[PASS][0m Concurrent Index Operations
+
+[1;33mRunning Test Suite 4: Disk Space Exhaustion[0m
+[0;34m[TEST][0m Disk Space Simulation
+[2026-04-03T15:43:38Z] [INFO] Testing: Disk Space Exhaustion Simulation
+[2026-04-03T15:43:38Z] [INFO] Creating test file of 10240KB...
+[2026-04-03T15:43:38Z] [INFO] Large file created, testing write operations...
+[2026-04-03T15:43:38Z] [INFO] Write succeeded (space still available)
+[0;32m[PASS][0m Disk Space Simulation
+[0;34m[TEST][0m Large Memory File
+[2026-04-03T15:43:38Z] [INFO] Testing: Large Memory File Handling
+[2026-04-03T15:43:38Z] [INFO] Created file of 166998 bytes
+Config warnings:\n- plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot (stale config entry ignored; remove it from plugins config)
+│
+◇  Config warnings ────────────────────────────────────────────────────╮
+│                                                                      │
+│  - plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot  │
+│    (stale config entry ignored; remove it from plugins config)       │
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────╯
+Memory index updated (main).
+[2026-04-03T15:43:43Z] [INFO] Large file indexed successfully
+[0;32m[PASS][0m Large Memory File
+
+[1;33mRunning Test Suite 5: Permission Errors[0m
+[0;34m[TEST][0m Read-Only Directory
+[2026-04-03T15:43:43Z] [INFO] Testing: Read-Only Memory Directory
+./test/edge-case-tests.sh: line 498: /home/cina/.openclaw/workspace/memory/readonly-test.md: Permission denied
+[2026-04-03T15:43:43Z] [INFO] Correctly detected read-only condition
+[0;32m[PASS][0m Read-Only Directory
+[0;34m[TEST][0m Read-Only File
+[2026-04-03T15:43:43Z] [INFO] Testing: Read-Only Memory File
+./test/edge-case-tests.sh: line 532: /home/cina/.openclaw/workspace/memory/readonly-file.md: Permission denied
+[2026-04-03T15:43:43Z] [INFO] Correctly detected read-only file
+[0;32m[PASS][0m Read-Only File
+[0;34m[TEST][0m Script Permission Handling
+[2026-04-03T15:43:43Z] [INFO] Testing: Script Permission Handling
+=== OpenClaw Memory Maintenance Started at Fri Apr  3 03:43:43 PM UTC 2026 ===
+Creating today's memory file: /home/cina/.openclaw/workspace/memory/2026-04-03.md
+Cleaning up old files...
+Updating memory index...
+Config warnings:\n- plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot (stale config entry ignored; remove it from plugins config)
+│
+◇  Config warnings ────────────────────────────────────────────────────╮
+│                                                                      │
+│  - plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot  │
+│    (stale config entry ignored; remove it from plugins config)       │
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────╯
+Memory index updated (main).
+Memory status:
+Config warnings:\n- plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot (stale config entry ignored; remove it from plugins config)
+│
+◇  Config warnings ────────────────────────────────────────────────────╮
+│                                                                      │
+│  - plugins.entries.openclaw-qqbot: plugin not found: openclaw-qqbot  │
+│    (stale config entry ignored; remove it from plugins config)       │
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────╯
+Memory Search (main)
+Provider: none (requested: auto)
+Model: none
+Sources: memory
+Indexed: 2/2 files · 2 chunks
+Dirty: no
+Store: ~/.openclaw/memory/main.sqlite
+Workspace: ~/.openclaw/workspace
+By source:
+  memory · 2/2 files · 2 chunks
+Vector: unknown
+FTS: ready
+Embedding cache: enabled (0 entries)
+Batch: disabled (failures 0/2)
+
+=== OpenClaw Memory Maintenance Completed at Fri Apr  3 03:43:49 PM UTC 2026 ===
+
+[2026-04-03T15:43:49Z] [INFO] Script ran successfully via bash
+[0;32m[PASS][0m Script Permission Handling
+[0;34m[TEST][0m File Ownership Simulation
+[2026-04-03T15:43:49Z] [INFO] Testing: File Ownership Simulation
+[2026-04-03T15:43:49Z] [INFO] Correctly detected permission denied
+[0;32m[PASS][0m File Ownership Simulation
+[2026-04-03T15:43:49Z] [INFO] Restoring original memory directory...
+[2026-04-03T15:43:49Z] [INFO] Cleaning up test artifacts...
+
+[0;34mGenerating test report...[0m
+[2026-04-03T15:43:49Z] [INFO] Report generated: /home/cina/.openclaw/workspace/test/results/edge-case-report.md
+
+[0;34m========================================[0m
+[0;34mTest Summary[0m
+[0;34m========================================[0m
+Tests Run:    13
+Passed:       [0;32m12[0m
+Failed:       [0;31m1[0m
+
+[0;31mSome tests failed. Check /home/cina/.openclaw/workspace/test/results/edge-case-report.md for details.[0m

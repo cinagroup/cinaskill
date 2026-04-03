@@ -1,0 +1,7 @@
+{
+    "consecutive_failures": 0,
+    "last_failure_time": null,
+    "state": "CLOSED",
+    "max_failures": 3,
+    "reset_timeout_ms": 60000
+}

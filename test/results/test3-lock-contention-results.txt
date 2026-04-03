@@ -1,0 +1,21 @@
+Test 3: Concurrent Lock Contention
+===================================
+Date: 2026-04-03_15:42:52
+Parameters:
+  - Concurrent processes: 5
+  - Lock mechanism: flock (POSIX file locking)
+  - Lock file: /home/cina/.openclaw/workspace/memory/.consolidate-lock
+
+Results:
+  - Successful acquisitions: 1
+  - Blocked attempts: 4
+  - Expected acquirers: 1
+
+Validation:
+  - Mutual exclusion: PASS
+  - No deadlocks: PASS
+
+Status: PASSED
+
+Note: Uses flock for proper POSIX file locking. In production, the memory
+system uses a JSON-based lock file with PID and timestamp validation.
