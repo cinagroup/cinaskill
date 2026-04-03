@@ -1,0 +1,78 @@
+{
+  "name": "@openclaw/memory-system",
+  "version": "3.1.0",
+  "description": "Three-layer memory system with LLM extraction, heat management, notifications, dashboard, encrypted backup, and cron automation",
+  "author": "001 (OpenClaw Team)",
+  "license": "MIT",
+  "keywords": [
+    "openclaw",
+    "memory",
+    "skill",
+    "claude-code",
+    "memdir",
+    "llm",
+    "backup",
+    "automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cinagroup/cinaskill.git",
+    "directory": "skills/memory-system"
+  },
+  "scripts": {
+    "install": "chmod +x scripts/*.sh",
+    "start": "python3 memory-dashboard/server.py",
+    "backup": "bash scripts/memory-backup.sh full",
+    "heat:auto": "bash scripts/manage-heat.sh auto",
+    "notify:weekly": "bash scripts/memory-notify.sh weekly"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.8.0"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "INSTALL.md",
+    "package.json",
+    "scripts/",
+    "memory-dashboard/",
+    "templates/",
+    "docs/"
+  ],
+  "openclaw": {
+    "type": "skill",
+    "category": "productivity",
+    "capabilities": [
+      "memory-management",
+      "llm-extraction",
+      "heat-scoring",
+      "notifications",
+      "backup-sync",
+      "dashboard",
+      "cron-automation"
+    ],
+    "config": {
+      "memory_dir": "/root/.openclaw/workspace/memory",
+      "scene_dir": "/root/.openclaw/memory-tdai/scene_blocks",
+      "validate_paths": true
+    },
+    "cron": [
+      {
+        "name": "daily-backup",
+        "schedule": "0 2 * * *",
+        "command": "bash scripts/memory-backup.sh full"
+      },
+      {
+        "name": "heat-decay",
+        "schedule": "0 3 * * 0",
+        "command": "bash scripts/manage-heat.sh auto"
+      },
+      {
+        "name": "weekly-digest",
+        "schedule": "0 9 * * 1",
+        "command": "bash scripts/memory-notify.sh weekly"
+      }
+    ]
+  }
+}
